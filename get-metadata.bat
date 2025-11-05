@@ -1,13 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "file=X:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
-set "dir_letter=X"
-if not exist "%file%" (
-    set "file=Z:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
-    set "dir_letter=Z"
-)
-
+set /p base_dir=<config.txt
+:: Build full file path
+set "file=%base_dir%recent_rs_files.txt"
 echo dir_letter=%dir_letter%
 
 for %%F in ("C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\*.raw") do (
