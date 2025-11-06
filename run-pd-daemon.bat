@@ -4,6 +4,7 @@ setlocal enabledelayedexpansion
 set /p base_dir=<config.txt
 :: Build full file path
 set "file=%base_dir%recent_rs_files.txt"
+set "dir_letter=%base_dir:~0,1%"
 
 set "experiment_metadata=C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\metadata.txt"
 

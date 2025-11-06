@@ -38,6 +38,7 @@ echo dateString=!dateString!
 echo PrevdateString=!PrevdateString!
 
 set /p base_dir=<config.txt
+set "dir_letter=%base_dir:~0,1%"
 :: Build full file path
 set "file=%base_dir%recent_rs_files.txt"
 

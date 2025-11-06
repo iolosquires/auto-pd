@@ -4,6 +4,7 @@ setlocal enabledelayedexpansion
 set /p base_dir=<config.txt
 :: Build full file path
 set "file=%base_dir%recent_rs_files.txt"
+set "dir_letter=%base_dir:~0,1%"
 
 rem if file exists, and first line is empty, stop, otherwise run run-pd-daemon.bat
 

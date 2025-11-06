@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 set /p base_dir=<config.txt
 :: Build full file path
 set "file=%base_dir%recent_rs_files.txt"
-echo dir_letter=%dir_letter%
+set "dir_letter=%base_dir:~0,1%"
 
 for %%F in ("C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\*.raw") do (
     echo extracting metadata for "%%~fF"

@@ -5,6 +5,8 @@ setlocal enabledelayedexpansion
 set /p base_dir=<config.txt
 :: Build full file path
 set "file=%base_dir%recent_rs_files.txt"
+:: Extract the first character
+set "dir_letter=%base_dir:~0,1%"
 
 if exist "%file%" (
     del "%file%"
