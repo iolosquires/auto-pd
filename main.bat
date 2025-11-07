@@ -1,8 +1,7 @@
-
 @echo off
 setlocal enabledelayedexpansion
-
 set /p base_dir=<setup.txt
+
 :: Build full file path
 
 echo looking for new files in the last two days
