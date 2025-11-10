@@ -6,6 +6,8 @@ rem Get the directory of the batch file
 set script_dir=%~dp0
 
 set /p base_dir=<%script_dir%..\setup.txt
+set /p file_age=<%script_dir%..\age-of-files.txt
+
 set "file=%base_dir%recent_rs_files.txt"
 :: Extract the first character
 set "dir_letter=%base_dir:~0,1%"
@@ -65,15 +67,15 @@ for %%f in (mrc-astral
 
                 if exist "!datePath1!\" (
                     echo Searching in !datePath1!...
-                    robocopy "!datePath1!" "C:\Users" *_RS_*.raw /S /L /NJH /NJS /NDL /FP /MAXAGE:7  >> "!dir_letter!:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
-                    robocopy "!datePath1!" "C:\Users" *_AKnebel_*.raw /S /L /NJH /NJS /NDL /FP /MAXAGE:7  >> "!dir_letter!:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
+                    robocopy "!datePath1!" "C:\Users" *_RS_*.raw /S /L /NJH /NJS /NDL /FP /MAXAGE:%file_age%  >> "!dir_letter!:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
+                    robocopy "!datePath1!" "C:\Users" *_AKnebel_*.raw /S /L /NJH /NJS /NDL /FP /MAXAGE:%file_age%  >> "!dir_letter!:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
                 ) else (
                     echo Skipping, directory not found: !datePath1!
                 )
                 if exist "!datePath2!\" (
                     echo Searching in !datePath2!...
-                    robocopy "!datePath2!" "C:\Users" *_RS_*.raw /S /L /NJH /NJS /NDL /FP /MAXAGE:7 >> "!dir_letter!:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
-                    robocopy "!datePath2!" "C:\Users" *_AKnebel_*.raw /S /L /NJH /NJS /NDL /FP /MAXAGE:7  >> "!dir_letter!:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
+                    robocopy "!datePath2!" "C:\Users" *_RS_*.raw /S /L /NJH /NJS /NDL /FP /MAXAGE:%file_age% >> "!dir_letter!:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
+                    robocopy "!datePath2!" "C:\Users" *_AKnebel_*.raw /S /L /NJH /NJS /NDL /FP /MAXAGE:%file_age%  >> "!dir_letter!:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\recent_rs_files.txt"
                 ) else (
                     echo Skipping, directory not found: !datePath2!
                 )
