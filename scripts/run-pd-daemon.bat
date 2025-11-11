@@ -11,7 +11,14 @@ set "dir_letter=%base_dir:~0,1%"
 echo Deleting all files in "C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles"...
 del /Q "C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\*"
 
-set "experiment_metadata=C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\metadata.txt"
+if %get_metadata%==1 (
+    echo Extracting metadata...
+    call %base_dir%get-metadata.bat
+) else (
+    echo Metadata extraction disabled. Skipping metadata extraction.
+
+)
+
 
 for /f "usebackq tokens=1-5 delims=	 " %%A in ("%file%") do (
     echo Copying "%%E" to "C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles"

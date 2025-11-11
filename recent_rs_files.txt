@@ -4,11 +4,7 @@
 
 
 
-
-
-
-
-
-
-
+	    New File  		 619.1 m	Z:\ms-data\minint-vgcqtij\2025\11_November\20251104\QC_Lumos_251104_01.raw
+	    New File  		 615.6 m	Z:\ms-data\minint-vgcqtij\2025\11_November\20251104\QC_Lumos_251104_02.raw
+	    New File  		 599.8 m	Z:\ms-data\minint-vgcqtij\2025\11_November\20251104\QC_Lumos_251104_03.raw
 
