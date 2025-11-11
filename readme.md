@@ -15,6 +15,7 @@ This script automatically finds recent mass spec raw files on the Lumos, 480, as
 * Add the location of the script.
 * Add age of the files in days.
 * Add search pattern for finding the raw files e.g. "_RS_" for reagents and services files.
+* Select if you want the search result files to be automatically copied to their folder on proteinchem (1: yes, 0: no). If no, the search files will be at this location on the discoverer1 server: C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles
 
 
 ### Executing program
