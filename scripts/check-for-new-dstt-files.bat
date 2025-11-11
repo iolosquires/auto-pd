@@ -4,11 +4,12 @@ setlocal enabledelayedexpansion
 rem Get the directory of the batch file
 set script_dir=%~dp0
 
-set /p base_dir=<%script_dir%..\setup.txt
+for /F "tokens=1,2 delims==" %%a in ('findstr "^" "%script_dir%..\config.ini"') do (set "%%a=%%b")
 
 rem Build full file path
 set "file=%base_dir%recent_rs_files.txt"
-set "dir_letter=%base_dir:~0,1%"
+
+echo Checking file: %file%
 
 rem if file exists, and first line is empty, stop, otherwise run run-pd-daemon.bat
 
@@ -23,7 +24,7 @@ if defined firstLine (
     echo Checking if first line contains "New File"...
     echo !firstLine! | findstr /C:"New File" >nul
     if not errorlevel 1 (
-        call %dir_letter%:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\run-pd-daemon.bat
+        call %script_dir%run-pd-daemon.bat
     ) else (
         echo "New File" not found in first line. Exiting without running PD daemon.
         exit /b 0

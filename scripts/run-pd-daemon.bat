@@ -3,8 +3,8 @@ setlocal enabledelayedexpansion
 
 rem Get the directory of the batch file
 set script_dir=%~dp0
+for /F "tokens=1,2 delims==" %%a in ('findstr "^" "%script_dir%..\config.ini"') do (set "%%a=%%b")
 
-set /p base_dir=<%script_dir%..\setup.txt
 set "file=%base_dir%recent_rs_files.txt"
 set "dir_letter=%base_dir:~0,1%"
 
@@ -39,4 +39,4 @@ echo Deleting all .raw files in "C:\ProgramData\Thermo\Proteome Discoverer 2.4\P
 del /Q "C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\*"
 echo Done.
 
-call %dir_letter%:\proteinchem\IoloSquires\00-Projects\OwnProjects\auto-pd\move-search-to-proteinchem.bat
+call %base_dir%move-search-to-proteinchem.bat

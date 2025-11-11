@@ -8,12 +8,14 @@ This script automatically finds recent mass spec raw files on the Lumos, 480, as
 
 * Must be run from discoverer1 server.
 * Folder for search output needs to exist on proteinchem before this script is run.
-* PD 2.4 needs to be running on at least one person's account for this script to work.
+* PD 2.4 needs to be running on the server for this script to work.
 
-### Installing
+### Config.ini setup
 
-* Add the location of the script to the setup.txt file
-* Add to age-of-files.txt the age of the files in days.
+* Add the location of the script.
+* Add age of the files in days.
+* Add search pattern for finding the raw files e.g. "_RS_" for reagents and services files.
+
 
 ### Executing program
 
