@@ -8,6 +8,9 @@ for /F "tokens=1,2 delims==" %%a in ('findstr "^" "%script_dir%..\config.ini"') 
 set "file=%base_dir%recent_rs_files.txt"
 set "dir_letter=%base_dir:~0,1%"
 
+echo Deleting all files in "C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles"...
+del /Q "C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\*"
+
 set "experiment_metadata=C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\metadata.txt"
 
 for /f "usebackq tokens=1-5 delims=	 " %%A in ("%file%") do (
@@ -35,8 +38,13 @@ for %%F in ("C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\*.raw") d
      
 )
 
-echo Deleting all .raw files in "C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles"...
-del /Q "C:\ProgramData\Thermo\Proteome Discoverer 2.4\PublicFiles\*"
-echo Done.
+if %automatic_move_to_proteinchem%==1 (
+    echo Moving search results to proteinchem...
+    call %base_dir%move-search-to-proteinchem.bat
+) else (
+    echo Automatic move disabled. Skipping move to proteinchem.
+    echo Done.
+    exit /b
+)
 
-call %base_dir%move-search-to-proteinchem.bat
+
